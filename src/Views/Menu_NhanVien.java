@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ */
 package Views;
 
 import Repository.Repository_NhanVien;
@@ -5,26 +9,32 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import model.NhanVien;
 
-public class View_NhanVien extends javax.swing.JFrame {
-
+/**
+ *
+ * @author nguye
+ */
+public class Menu_NhanVien extends javax.swing.JInternalFrame {
     private Repository.Repository_NhanVien rp = new Repository_NhanVien();
     private DefaultTableModel mol;
     private int i;
-
-    public View_NhanVien() {
-
+    /**
+     * Creates new form Menu_NhanVien
+     */
+    public Menu_NhanVien() {
         initComponents();
         this.fillTable(rp.getAll());
         this.fillComboVT();
         this.fillComboLocVT();
         this.fillComboTT();
         this.fillComboLocTT();
-        setLocationRelativeTo(null);
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI ui =(BasicInternalFrameUI)this.getUI();
+        ui.setNorthPane(null);
     }
-
     public void fillTable(List<NhanVien> list) {
         mol = (DefaultTableModel) tbl_QLNV.getModel();
         mol.setRowCount(0);
@@ -129,7 +139,6 @@ public class View_NhanVien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         btn_sua = new javax.swing.JButton();
         btnTCDS = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
@@ -162,7 +171,7 @@ public class View_NhanVien extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(870, 530));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_sua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
@@ -172,7 +181,7 @@ public class View_NhanVien extends javax.swing.JFrame {
                 btn_suaActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_sua, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 104, -1));
+        getContentPane().add(btn_sua, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 90, -1));
 
         btnTCDS.setBackground(new java.awt.Color(51, 153, 255));
         btnTCDS.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -182,15 +191,15 @@ public class View_NhanVien extends javax.swing.JFrame {
                 btnTCDSActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTCDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
+        getContentPane().add(btnTCDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setText("Email:");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 56, -1, -1));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel16.setText("Số điện thoại:");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 189, -1, -1));
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         btn_lamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh.png"))); // NOI18N
         btn_lamMoi.setText("Làm mới");
@@ -199,7 +208,7 @@ public class View_NhanVien extends javax.swing.JFrame {
                 btn_lamMoiActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_lamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, -1, -1));
+        getContentPane().add(btn_lamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 200, -1));
 
         btn_them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Add.png"))); // NOI18N
         btn_them.setText("Thêm");
@@ -208,31 +217,30 @@ public class View_NhanVien extends javax.swing.JFrame {
                 btn_themActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_them, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 52, 104, -1));
+        getContentPane().add(btn_them, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 200, 60));
 
-        buttonGroup1.add(rdo_Nu);
         rdo_Nu.setText("Nữ");
         rdo_Nu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdo_NuActionPerformed(evt);
             }
         });
-        getContentPane().add(rdo_Nu, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 147, -1, -1));
+        getContentPane().add(rdo_Nu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel17.setText("Vai trò:");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
 
         txt_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_emailActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 56, 160, -1));
+        getContentPane().add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 160, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel18.setText("Mã nhân viên:");
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 52, -1, -1));
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         btn_xoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete.png"))); // NOI18N
         btn_xoa.setText("Xóa");
@@ -241,21 +249,21 @@ public class View_NhanVien extends javax.swing.JFrame {
                 btn_xoaActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_xoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 104, -1));
+        getContentPane().add(btn_xoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, 100, -1));
 
         txt_maNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_maNhanVienActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_maNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 52, 150, -1));
+        getContentPane().add(txt_maNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 150, -1));
 
         txt_SoDienThoai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_SoDienThoaiActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_SoDienThoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 189, 150, -1));
+        getContentPane().add(txt_SoDienThoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 150, -1));
 
         cbo_vaiTro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbo_vaiTro.addActionListener(new java.awt.event.ActionListener() {
@@ -263,14 +271,14 @@ public class View_NhanVien extends javax.swing.JFrame {
                 cbo_vaiTroActionPerformed(evt);
             }
         });
-        getContentPane().add(cbo_vaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 160, -1));
+        getContentPane().add(cbo_vaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 160, -1));
 
         txt_hoVaTen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_hoVaTenActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_hoVaTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 102, 150, -1));
+        getContentPane().add(txt_hoVaTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 150, -1));
 
         tbl_QLNV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -290,24 +298,23 @@ public class View_NhanVien extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbl_QLNV);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 700, 220));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 840, 170));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel20.setText("Trạng thái:");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, 19));
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, 19));
 
-        buttonGroup1.add(rdo_Nam);
         rdo_Nam.setText("Nam");
         rdo_Nam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdo_NamActionPerformed(evt);
             }
         });
-        getContentPane().add(rdo_Nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 147, -1, -1));
+        getContentPane().add(rdo_Nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setText("Mật khẩu");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 189, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, -1, -1));
 
         cbo_trangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbo_trangThai.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +322,7 @@ public class View_NhanVien extends javax.swing.JFrame {
                 cbo_trangThaiActionPerformed(evt);
             }
         });
-        getContentPane().add(cbo_trangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 149, 160, -1));
+        getContentPane().add(cbo_trangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 160, -1));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(204, 204, 204), null, null), "Tìm kiếm ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
@@ -362,7 +369,7 @@ public class View_NhanVien extends javax.swing.JFrame {
                 .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnTimKiem)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,29 +381,29 @@ public class View_NhanVien extends javax.swing.JFrame {
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTimKiem)
                     .addComponent(jLabel7))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 840, 80));
 
         txt_matKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_matKhauActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_matKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 189, 160, -1));
+        getContentPane().add(txt_matKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 160, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setText("Họ và tên:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 102, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setText("Giới tính:");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 147, -1, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel14.setText("Thông tin nhân viên");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 240, 32));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, -1, 32));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -464,16 +471,16 @@ public class View_NhanVien extends javax.swing.JFrame {
             int trangThai = cbo_trangThai.getSelectedItem().toString().equals("Đang làm") ? 0 : 1;
 
             NhanVien nv = new NhanVien(
-                    idNhanVien,
-                    maNV,
-                    hoTen,
-                    gioiTinh,
-                    sdt,
-                    email,
-                    matKhau,
-                    idChucVu,
-                    vaiTro,
-                    trangThai
+                idNhanVien,
+                maNV,
+                hoTen,
+                gioiTinh,
+                sdt,
+                email,
+                matKhau,
+                idChucVu,
+                vaiTro,
+                trangThai
             );
 
             if (rp.update(nv) > 0) {
@@ -488,11 +495,9 @@ public class View_NhanVien extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Lỗi hệ thống, không thể cập nhật nhân viên");
         }
-
     }//GEN-LAST:event_btn_suaActionPerformed
 
     private void btnTCDSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTCDSActionPerformed
-
 
     }//GEN-LAST:event_btnTCDSActionPerformed
 
@@ -556,16 +561,16 @@ public class View_NhanVien extends javax.swing.JFrame {
             int trangThai = cbo_trangThai.getSelectedItem().toString().equals("Đang làm") ? 0 : 1; // theo database bạn là 0=đang làm
 
             NhanVien nv = new NhanVien(
-                    0,
-                    maNV,
-                    hoTen,
-                    gioiTinh,
-                    sdt,
-                    email,
-                    matKhau,
-                    idChucVu,
-                    vaiTro,
-                    trangThai
+                0,
+                maNV,
+                hoTen,
+                gioiTinh,
+                sdt,
+                email,
+                matKhau,
+                idChucVu,
+                vaiTro,
+                trangThai
             );
 
             if (rp.add(nv) > 0) {
@@ -580,7 +585,6 @@ public class View_NhanVien extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Lỗi hệ thống, không thể thêm nhân viên");
         }
-
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void rdo_NuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_NuActionPerformed
@@ -664,40 +668,6 @@ public class View_NhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_matKhauActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View_NhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View_NhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View_NhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View_NhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new View_NhanVien().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTCDS;
@@ -706,7 +676,6 @@ public class View_NhanVien extends javax.swing.JFrame {
     private javax.swing.JButton btn_sua;
     private javax.swing.JButton btn_them;
     private javax.swing.JButton btn_xoa;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cboLocVT;
     private javax.swing.JComboBox<String> cbo_trangThai;
     private javax.swing.JComboBox<String> cbo_vaiTro;
