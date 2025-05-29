@@ -116,7 +116,6 @@ public class Repository_NhanVien {
         }
     }
 
-    // "Xóa" nhân viên = set trangThai = 1
     public boolean delete(String maNhanVien) {
         String sql = "UPDATE NhanVien SET trangThai = 1 WHERE maNhanVien = ?";
         try (Connection con = Dbconnection.getConnection();
