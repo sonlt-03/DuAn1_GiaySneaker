@@ -12,10 +12,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class HoaDonChiTiet {
+    private int id;
     private int idHoaDon;
-    private int idChiTietSP;
+    private int idSanPham;
     private int soLuong;
     private double donGia;
-    private String ngayMua;
-    private String ghiChu;
-}
+    private double giamGia;
+    private double thanhTien;
+}   

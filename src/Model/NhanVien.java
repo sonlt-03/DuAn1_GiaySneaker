@@ -122,4 +122,9 @@ public class NhanVien {
             (this.getTrangThai() == 0 ? "Đang làm" : "Ngừng làm")
         };
     }
+    
+    @Override
+    public String toString() {
+    return this.hoTen;
+}
 }

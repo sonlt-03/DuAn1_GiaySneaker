@@ -5,6 +5,7 @@
 package Views;
 
 import java.awt.Color;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,13 +17,13 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    
     Color DefaultColor, ClickedColor;
+
     public Menu() {
         initComponents();
-        DefaultColor = new Color(204,255,255);
-        ClickedColor = new Color(204,204,204);
-        
+        DefaultColor = new Color(204, 255, 255);
+        ClickedColor = new Color(204, 204, 204);
+
         btnSanPham.setBackground(DefaultColor);
         btnNhanVien.setBackground(DefaultColor);
         btnHoaDon.setBackground(DefaultColor);
@@ -30,6 +31,15 @@ public class Menu extends javax.swing.JFrame {
         btnKhuyenMai.setBackground(DefaultColor);
         btnThongKe.setBackground(DefaultColor);
         btnDangXuat.setBackground(DefaultColor);
+        if (LoginForm.nhanVienDangNhap != null) {
+            txtTK.setText(LoginForm.nhanVienDangNhap.getEmail());
+
+            // Hiển thị vai trò
+            txtTK.setEditable(false); // Không cho phép chỉnh sửa
+            txtVaiTro.setEditable(false);   // Không cho phép chỉnh sửa
+            String vaiTro = (LoginForm.nhanVienDangNhap.getVaiTro() == 0) ? "Quản lý" : "Nhân viên";
+            txtVaiTro.setText(vaiTro);
+        }
     }
 
     /**
@@ -48,6 +58,10 @@ public class Menu extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         Menu = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtTK = new javax.swing.JTextField();
+        txtVaiTro = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         nhanVien = new javax.swing.JPanel();
         btnNhanVien = new javax.swing.JButton();
@@ -119,14 +133,32 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Tài Khoản");
+
+        jLabel4.setText("Vai Trò");
+
+        txtVaiTro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVaiTroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, 929, Short.MAX_VALUE)
-                .addGap(35, 35, 35)
+                .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtTK)
+                    .addComponent(txtVaiTro, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -140,6 +172,16 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 100));
@@ -378,7 +420,7 @@ public class Menu extends javax.swing.JFrame {
         btnKhuyenMai.setBackground(DefaultColor);
         btnThongKe.setBackground(DefaultColor);
         btnDangXuat.setBackground(DefaultColor);
-        
+
         Menu.setText("Nhân viên");
     }//GEN-LAST:event_nhanVienMousePressed
 
@@ -391,6 +433,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseClicked
+        if (LoginForm.nhanVienDangNhap != null && LoginForm.nhanVienDangNhap.getVaiTro() == 1) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập mục này!");
+            return;
+        }
         Menu_NhanVien menu2 = new Menu_NhanVien();
         jDesktopPanel.removeAll();
         jDesktopPanel.add(menu2).setVisible(true);
@@ -417,7 +463,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseClicked
-         Menu_KhachHang menu4 = new Menu_KhachHang();
+        Menu_KhachHang menu4 = new Menu_KhachHang();
         jDesktopPanel.removeAll();
         jDesktopPanel.add(menu4).setVisible(true);
     }//GEN-LAST:event_btnKhachHangMouseClicked
@@ -450,7 +496,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
     private void btnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseClicked
-         Menu_ThongKe menu6 = new Menu_ThongKe();
+        Menu_ThongKe menu6 = new Menu_ThongKe();
         jDesktopPanel.removeAll();
         jDesktopPanel.add(menu6).setVisible(true);
     }//GEN-LAST:event_btnThongKeMouseClicked
@@ -467,7 +513,7 @@ public class Menu extends javax.swing.JFrame {
         btnKhuyenMai.setBackground(DefaultColor);
         btnThongKe.setBackground(DefaultColor);
         btnDangXuat.setBackground(DefaultColor);
-        
+
         Menu.setText("Sản phẩm");
     }//GEN-LAST:event_btnSanPhamMousePressed
 
@@ -479,7 +525,7 @@ public class Menu extends javax.swing.JFrame {
         btnKhuyenMai.setBackground(DefaultColor);
         btnThongKe.setBackground(DefaultColor);
         btnDangXuat.setBackground(DefaultColor);
-        
+
         Menu.setText("Nhân viên");
     }//GEN-LAST:event_btnNhanVienMousePressed
 
@@ -491,7 +537,7 @@ public class Menu extends javax.swing.JFrame {
         btnKhuyenMai.setBackground(DefaultColor);
         btnThongKe.setBackground(DefaultColor);
         btnDangXuat.setBackground(DefaultColor);
-        
+
         Menu.setText("Hóa đơn");
     }//GEN-LAST:event_btnHoaDonMousePressed
 
@@ -503,7 +549,7 @@ public class Menu extends javax.swing.JFrame {
         btnKhuyenMai.setBackground(DefaultColor);
         btnThongKe.setBackground(DefaultColor);
         btnDangXuat.setBackground(DefaultColor);
-        
+
         Menu.setText("Khách hàng");
     }//GEN-LAST:event_btnKhachHangMousePressed
 
@@ -515,7 +561,7 @@ public class Menu extends javax.swing.JFrame {
         btnKhuyenMai.setBackground(ClickedColor);
         btnThongKe.setBackground(DefaultColor);
         btnDangXuat.setBackground(DefaultColor);
-        
+
         Menu.setText("Khuyến mãi");
     }//GEN-LAST:event_btnKhuyenMaiMousePressed
 
@@ -527,7 +573,7 @@ public class Menu extends javax.swing.JFrame {
         btnKhuyenMai.setBackground(DefaultColor);
         btnThongKe.setBackground(ClickedColor);
         btnDangXuat.setBackground(DefaultColor);
-        
+
         Menu.setText("Thống kê");
     }//GEN-LAST:event_btnThongKeMousePressed
 
@@ -539,9 +585,13 @@ public class Menu extends javax.swing.JFrame {
         btnKhuyenMai.setBackground(DefaultColor);
         btnThongKe.setBackground(DefaultColor);
         btnDangXuat.setBackground(ClickedColor);
-        
+
         Menu.setText("Đăng xuất");
     }//GEN-LAST:event_btnDangXuatMousePressed
+
+    private void txtVaiTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVaiTroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVaiTroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -573,6 +623,7 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+
                 new Menu().setVisible(true);
             }
         });
@@ -590,11 +641,15 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel nhanVien;
+    private javax.swing.JTextField txtTK;
+    private javax.swing.JTextField txtVaiTro;
     // End of variables declaration//GEN-END:variables
 }

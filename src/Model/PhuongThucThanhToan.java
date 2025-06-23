@@ -17,4 +17,9 @@ public class PhuongThucThanhToan {
     private String tenPTTT;
     private String moTa;
     private int trangThai;
+    
+    @Override
+    public String toString() {
+    return this.tenPTTT;
+}
 }

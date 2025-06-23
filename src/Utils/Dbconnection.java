@@ -16,11 +16,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Dbconnection {
-    private static final String USERNAME = "sa";
-    private static final String PASSWORD = "123456";
+    private static final String USERNAME = "sa2";
+    private static final String PASSWORD = "123";
     private static final String SERVER = "localhost";
     private static final String PORT = "1433";
-    private static final String DATABASE_NAME = "GiaySneaker";
+    private static final String DATABASE_NAME = "GiaySneaker123";
     private static final boolean USING_SSL = true;
    
     private static String CONNECT_STRING;
@@ -67,3 +67,4 @@ public class Dbconnection {
         System.out.println(dbmt.getDatabaseProductVersion());
     }
 }
+
